@@ -1,7 +1,7 @@
 [User entered credentials]
 <--->
 [Spring Security Filters] 
-    ---> Authentication 2
+    ---> Authentication
     ---> Security Context
 <--->
 [Authentication Manager]
@@ -15,17 +15,21 @@ Spring Security Filters
     โดยสามารถติดตามทุกคำขอที่ถูกส่งมาที่ server ได้
     สามารถเปลี่ยนเส้นของปลายทางของผู้ใช้ที่พยายามเข้าถึงได้
 
+Authentication
+    ใช้สำหรับดึง username, password จาก HTTP Request ออกมาเป็น object
+    ของ User Detail
+
 Authentication Manager
-    เป็น interface หรือ class ที่จัดการ logic ของการรับรองความถูกค้อง
+    เป็น interface หรือ class ที่ใช้จัดการกับ acthentication provider ทุก ๆ ตัว
 
 Authentication Provider
-    สามารถเขียน business logic ที่เกี่ยวกับการรักษาความปลอดภัยที่นี่ได้
+    ใช้เขียน logic ทั้งหมดที่ใช้ในการตรวจสอบความถูกต้องของ user details ที่มายืนยันตัวตน
 
 Password Encoder
     ใช้สำหรับ hash passowrd ของผู้ใช้
 
 UserDetails Manager / Service
-    เป็นข้อมูลของ user
+    ใช้จัดการ CRUD ข้อมูลของ user จาก db หรือ storage
 
 Security Context
     เก็บข้อมูลของการยืนยันตัวตนของผู้ใช้
