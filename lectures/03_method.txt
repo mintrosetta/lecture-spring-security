@@ -6,3 +6,6 @@ authenticated
 
 permitAll
     ใช้ระบุหลัง RequestMatchers ให้สามารถใช้งานได้โดยไม่ต้องยืนยันตัวตน
+
+denyAll
+    ปฏิเสธการเข้าถึงทุก request อาจใช้ในกรณีที่เราต้องการปิด application
