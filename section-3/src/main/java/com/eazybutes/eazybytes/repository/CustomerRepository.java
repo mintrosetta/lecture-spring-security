@@ -1,6 +1,6 @@
 package com.eazybutes.eazybytes.repository;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +12,7 @@ import com.eazybutes.eazybytes.model.Customer;
 @Repository
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
-    @Query("SELECT c.* FROM Customer c WHERE c.email = :email")
-    List<Customer> findByEmail(@Param("email") String email);
+    @Query("SELECT c FROM Customer c WHERE c.email = :email")
+    Optional<Customer> findByEmail(@Param("email") String email);
 
 }
