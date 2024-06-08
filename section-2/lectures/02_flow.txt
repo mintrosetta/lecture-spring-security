@@ -1,0 +1,40 @@
+[User entered credentials]
+<--->
+[Spring Security Filters] 
+    ---> Authentication
+    ---> Security Context
+<--->
+[Authentication Manager]
+<--->
+[Authentication Provider]
+    ---> UserDetails Manager / Service
+    ---> Password Encoder
+
+Spring Security Filters 
+    มีบทบาทสำคัญมากในการรักษาความปลอดภัยของแอปพลิเคชัน
+    โดยสามารถติดตามทุกคำขอที่ถูกส่งมาที่ server ได้
+    สามารถเปลี่ยนเส้นของปลายทางของผู้ใช้ที่พยายามเข้าถึงได้
+
+Authentication
+    ใช้สำหรับดึง username, password จาก HTTP Request ออกมาเป็น object
+    ของ User Detail
+
+Authentication Manager
+    เป็น interface หรือ class ที่ใช้จัดการกับ acthentication provider ทุก ๆ ตัว
+
+Authentication Provider
+    ใช้เขียน logic ทั้งหมดที่ใช้ในการตรวจสอบความถูกต้องของ user details ที่มายืนยันตัวตน
+
+Password Encoder
+    ใช้สำหรับ hash passowrd ของผู้ใช้
+
+UserDetails Manager / Service
+    ใช้จัดการ CRUD ข้อมูลของ user จาก db หรือ storage
+
+Security Context
+    เก็บข้อมูลของการยืนยันตัวตนของผู้ใช้
+
+
+JSESSIONID 
+    คือค่าคุกกี้ที่ถูกสร้างขึ้นเมื่อการเข้าสู่ระบบของเราสำเร็จ 
+    และสำหรับผู้ใช้ปลายทางในคำขอที่ตามมาทั้งหมดไม่จำเป็นต้องป้อนข้อมูลประจำตัวของตน
