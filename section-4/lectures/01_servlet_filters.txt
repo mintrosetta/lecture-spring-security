@@ -1,0 +1,9 @@
+Flow 
+    [Cliend Seding Requests] <---> [Filters] <---> [Servlets]
+
+    Servlets 
+        เป็นอุปกรณ์ที่ใช้จัดการกับการรับส่งข้อมูลระหว่าง client & server ของ java
+
+    Filters 
+        เป็น Servlets ชนิดพิเศษใช้เพื่อสกัดกั้น (intercep) คำขอแต่ละคำขอที่จะเข้ามาใน application
+        ของเรา โดยเราสามารถเขียน logic ใด ๆ ก็ได้ ก่อนที่คำขอจะถูกส่งไปประมวลผล business logic
