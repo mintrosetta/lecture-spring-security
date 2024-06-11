@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.eazybutes.eazybytes.model.Customer;
 import com.eazybutes.eazybytes.repository.CustomerRepository;
 
+// custom authentication logic for web application
 @Configuration
 public class EazyBankUsernamePwdAuthenticationProvider implements AuthenticationProvider {
 
