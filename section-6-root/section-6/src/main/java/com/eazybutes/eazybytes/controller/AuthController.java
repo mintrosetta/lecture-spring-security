@@ -1,9 +1,11 @@
 package com.eazybutes.eazybytes.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +28,13 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("")
-    public String getTest() {
-        return "Hello auth";
+    @GetMapping("/users")
+    public Customer getUserDetail(Authentication authentication) {
+    	Optional<Customer> customerOptional = this.customerRepository.findByEmail(authentication.getName());
+        
+    	if (customerOptional.isPresent())  return null;
+    	
+    	return customerOptional.get();
     }
 
     @PostMapping("/register")
@@ -51,5 +57,4 @@ public class AuthController {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
 }
