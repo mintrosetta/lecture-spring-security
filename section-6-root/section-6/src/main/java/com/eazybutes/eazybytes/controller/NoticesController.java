@@ -22,6 +22,11 @@ public class NoticesController {
 		this.noticeRepository = noticeRepository;
 	}
 
+	@GetMapping("test")
+	public String testGet() {
+		return "Hello World";
+	}
+
     @GetMapping("")
     public ResponseEntity<List<Notice>> getNotices() {
     	List<Notice> notices = this.noticeRepository.findAllActiveNotices();
