@@ -33,7 +33,7 @@ public class ProjectSecurityConfig {
 
 				return config;
 			}
-		})).csrf(config -> config.disable())
+		})).csrf(config -> {})
 				.authorizeHttpRequests((auth) -> auth
 						.requestMatchers("/accounts/**", "/balances/**", "/loans/**", "/cards/**").authenticated()
 						.requestMatchers("/notices/**", "/contacts/**", "/auths/**").permitAll())
