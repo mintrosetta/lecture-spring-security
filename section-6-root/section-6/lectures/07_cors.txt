@@ -5,3 +5,13 @@ Cross Origin Resource Sharing (CORS)
 	หรือมี port ที่ต่างกัน ทำให้ Frontend ไม่สามารถเข้าถึงทรัพยากรณ์ของ Backend
 	ได้เพราะไม่ได้รับอนุญาติ ฝั่ง Backend จึงจะต้องระบุ domain ของ frontend ให้
 	มีสิทธิ์เข้าถึงทรัพยากรณ์
+	
+CorsConfigurationSource
+	เป็น interface ที่ใช้ในการตั้งค่า CORS
+	
+	.setAllowedOrigins()
+		ให้ url อะไรบ้างมีสิทธิ์เข้าถึง resource
+	.setAllowedMethods()
+		จาก url ที่ระบุ ให้เข้าถึง htto method อะไรบ้าง
+		
+		
