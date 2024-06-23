@@ -25,3 +25,32 @@ CSRF
 				<script>
 					document.getElementById("form").submit();
 				</script>
+				
+	แนวทางการแก้ปัญหา
+		เราจะต้องตรวจสอบ http request ว่ามาจาก client ของเราเองหรือไม่ หรือมาจากแหล่งอื่น ๆ ?
+		โดยเราจะใช้ csrf token เพื่อระบุว่า http request นี้มาจาก client
+		
+	CSRF Token
+		เป็น token แบบสุ่ม ถูกใช้งานโดยเว็บแอปพลิเคชันจำนวนมากเพื่อป้องกัน csrf attack
+		
+	ขั้นตอนที่ถูกเพิ่มมา เพื่อการป้องกัน
+		backend สร้าง CSRF Token แบบสุ่ม จากนั้นส่งไปให้ client ผ่าน cookies คู่กับ jwt
+		{
+			"token": "123456789",
+			"csrf": "@#$#@WDSDF!DWQDDSA"
+		}
+		
+		จากนั้นเมื่อมีการสร้าง HTTP Request ทางฝั่ง client จะต้องทำ csrf token จาก cookies
+		ใส่เข้ามาใน header และทำการส่ง request
+		
+		วิธีการนี้จะทำให้ client ของ hacker ไม่สามารถส่งคำขอมาที่ API ของเราได้
+		เนื่องจากไม่สามารถเข้าถึง cookie csrf ได้ ทำให้ไม่สามารถปลอม csrf ได้
+		
+	ช้อควรระวัง
+		เราไม่ควรเปิดการป้องกัน CSRF เป็น default เนื่องจากบางคำขออาจไม่จำเป็นต้องใช้
+		ถ้าเปิดไว้จะทำให้ไม่สามารถจัดการ resource ได้
+		
+		
+		
+		
+		

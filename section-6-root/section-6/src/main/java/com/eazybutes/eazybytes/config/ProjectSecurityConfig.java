@@ -33,9 +33,10 @@ public class ProjectSecurityConfig {
 
 				return config;
 			}
-		})).csrf(config -> {})
-				.authorizeHttpRequests((auth) -> auth
-						.requestMatchers("/accounts/**", "/balances/**", "/loans/**", "/cards/**").authenticated()
+		})).csrf(csrfConfig -> {
+			csrfConfig.ignoringRequestMatchers("/contacts", "/auths/register");
+		}).authorizeHttpRequests(
+				(auth) -> auth.requestMatchers("/accounts/**", "/balances/**", "/loans/**", "/cards/**").authenticated()
 						.requestMatchers("/notices/**", "/contacts/**", "/auths/**").permitAll())
 				.formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
 
