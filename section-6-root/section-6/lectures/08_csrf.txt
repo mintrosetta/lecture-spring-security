@@ -50,7 +50,23 @@ CSRF
 		เราไม่ควรเปิดการป้องกัน CSRF เป็น default เนื่องจากบางคำขออาจไม่จำเป็นต้องใช้
 		ถ้าเปิดไว้จะทำให้ไม่สามารถจัดการ resource ได้
 		
+	CsrfTokenRequestAttributeHandler
+		ใช้จัดการกับ csrf token
 		
+	CookieCsrfTokenRepository
+		ใช้จัดการและเก็บรักษา csrf ในคุกกี้
+		
+	withHttpOnlyFalse()
+		เป็นการบอก spring ให้สร้าง token ที่ javascript สามารถอ่านได้
+		
+	BasicAuthenticationFilter
+		เป็น filter ของ Spring Security ใช้เมื่อเราต้องการจัดการกับ basic authentication
+		
+	.addFilterAt(new CsrfCookieFilter(), BasicAuthenticationFilter.class) 
+		ให้ทำการเรียกใช้งาน CsrfCookieFilter หลังจาก BasicAutenticationFilter
+		เพราะว่าหลังจากที่ BasdicAuthenticationFilter ทำงานเสร็จ (login เสร็จ) 
+		Csrf จะถูกสร้างขึ้น และเราต้องการส่ง Csrf token เข้าไปใน header เผื่อใช้ในการ response
+		เราจึงใช้ CsrfCookieFilter
 		
 		
 		
